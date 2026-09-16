@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="300" viewBox="0 0 620 300" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <rect width="620" height="300" fill="#ffffff"/>
+  <text x="56" y="34" font-size="14" font-weight="600" fill="#1a1a1a">알고리즘 10문제 — 코드를 실제로 실행해서 채점</text>
+  <text x="56" y="52" font-size="11" fill="#777">RTX 4080 Laptop 12GB. 숨긴 테스트를 돌려 통과 여부로 판정</text>
+
+  <g stroke="#e8e8e8" stroke-width="1">
+    <line x1="232" y1="100" x2="560" y2="100"/>
+    <line x1="232" y1="155" x2="560" y2="155"/>
+    <line x1="232" y1="210" x2="560" y2="210"/>
+  </g>
+
+  <text x="222" y="96" font-size="11" fill="#333" text-anchor="end">ornith:9b-q8_0</text>
+  <text x="222" y="109" font-size="9.5" fill="#999" text-anchor="end">thinking ON · 41 tok/s</text>
+  <rect x="232" y="86" width="279" height="24" fill="#2d5f8a"/>
+  <text x="240" y="103" font-size="10.5" fill="#ffffff">문제당 17초</text>
+  <text x="521" y="103" font-size="12" font-weight="600" fill="#1a1a1a">9 / 10</text>
+
+  <text x="222" y="151" font-size="11" fill="#333" text-anchor="end">ornith-1.5:9b</text>
+  <text x="222" y="164" font-size="9.5" fill="#999" text-anchor="end">thinking ON · 54 tok/s</text>
+  <rect x="232" y="141" width="217" height="24" fill="#7ba3c4"/>
+  <text x="240" y="158" font-size="10.5" fill="#ffffff">문제당 39초</text>
+  <text x="459" y="158" font-size="12" font-weight="600" fill="#1a1a1a">7 / 10</text>
+  <text x="497" y="158" font-size="9.5" fill="#b07a57">실패 3건 중 2건은 토큰 잘림</text>
+
+  <text x="222" y="206" font-size="11" fill="#333" text-anchor="end">ornith-1.5:9b</text>
+  <text x="222" y="219" font-size="9.5" fill="#999" text-anchor="end">thinking OFF · 54 tok/s</text>
+  <rect x="232" y="196" width="186" height="24" fill="#c3d3e0"/>
+  <text x="240" y="213" font-size="10.5" fill="#33536b">문제당 13초</text>
+  <text x="428" y="213" font-size="12" font-weight="600" fill="#1a1a1a">6 / 10</text>
+
+  <text x="56" y="256" font-size="10.5" fill="#777">빠른 쪽이 더 잘 푸는 게 아니다. 구세대를 q8로 올린 ornith:9b-q8_0 이 25% 느리지만 2문제를 더 푼다.</text>
+  <text x="56" y="274" font-size="10.5" fill="#777">ornith-1.5:9b 은 긴 추론이 필요한 문제에서 약 4,000토큰에 걸려 답을 못 내고 잘린다.</text>
+</svg>

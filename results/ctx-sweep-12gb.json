@@ -1,0 +1,104 @@
+{
+  "gpu": "NVIDIA GeForce RTX 4080 Laptop GPU (12,282 MiB)",
+  "model": "ornith-1.5:9b",
+  "ollama": "0.33.3",
+  "env": {
+    "OLLAMA_FLASH_ATTENTION": "1",
+    "OLLAMA_KV_CACHE_TYPE": "q8_0"
+  },
+  "note": "TotalGB 는 Ollama 가 요구한 총량, VramGB 는 실제로 GPU 에 올라간 양. GpuPct = VramGB/TotalGB.",
+  "rows": [
+    {
+      "ctx": 4096,
+      "total_gb": 5.21,
+      "vram_gb": 5.21,
+      "gpu_pct": 100,
+      "tok_per_sec": 55.3
+    },
+    {
+      "ctx": 16384,
+      "total_gb": 5.69,
+      "vram_gb": 5.69,
+      "gpu_pct": 100,
+      "tok_per_sec": 54.7
+    },
+    {
+      "ctx": 32768,
+      "total_gb": 6.11,
+      "vram_gb": 6.11,
+      "gpu_pct": 100,
+      "tok_per_sec": 54.7
+    },
+    {
+      "ctx": 65536,
+      "total_gb": 7.14,
+      "vram_gb": 7.14,
+      "gpu_pct": 100,
+      "tok_per_sec": 55.2
+    },
+    {
+      "ctx": 98304,
+      "total_gb": 8.17,
+      "vram_gb": 8.17,
+      "gpu_pct": 100,
+      "tok_per_sec": 54.7
+    },
+    {
+      "ctx": 106496,
+      "total_gb": 8.43,
+      "vram_gb": 8.43,
+      "gpu_pct": 100,
+      "tok_per_sec": 55.3
+    },
+    {
+      "ctx": 114688,
+      "total_gb": 8.69,
+      "vram_gb": 8.69,
+      "gpu_pct": 100,
+      "tok_per_sec": 55.1
+    },
+    {
+      "ctx": 122880,
+      "total_gb": 8.94,
+      "vram_gb": 8.94,
+      "gpu_pct": 100,
+      "tok_per_sec": 54.9
+    },
+    {
+      "ctx": 126976,
+      "total_gb": 9.07,
+      "vram_gb": 9.07,
+      "gpu_pct": 100,
+      "tok_per_sec": 55.1
+    },
+    {
+      "ctx": 129024,
+      "total_gb": 9.86,
+      "vram_gb": 9.02,
+      "gpu_pct": 91,
+      "tok_per_sec": 53.9
+    },
+    {
+      "ctx": 131072,
+      "total_gb": 9.92,
+      "vram_gb": 9.08,
+      "gpu_pct": 92,
+      "tok_per_sec": 53.8
+    },
+    {
+      "ctx": 196608,
+      "total_gb": 12.77,
+      "vram_gb": 8.26,
+      "gpu_pct": 65,
+      "tok_per_sec": 19.4
+    },
+    {
+      "ctx": 262144,
+      "total_gb": 15.15,
+      "vram_gb": 8.33,
+      "gpu_pct": 55,
+      "tok_per_sec": 15.0
+    }
+  ],
+  "max_ctx_100pct_gpu": 126976
+}

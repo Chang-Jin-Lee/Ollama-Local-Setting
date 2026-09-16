@@ -1,4 +1,5 @@
 __pycache__/
 *.pyc
-ctx-sweep-*.json
+# 스윕 스크립트가 작업 폴더에 떨구는 임시 파일. results/ 안의 정리본은 커밋합니다.
+/ctx-sweep-*.json
 bench/out/

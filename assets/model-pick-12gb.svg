@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="300" viewBox="0 0 620 300" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <rect width="620" height="300" fill="#ffffff"/>
+  <text x="56" y="34" font-size="14" font-weight="600" fill="#1a1a1a">12GB에 뭘 올릴까 — 같은 조건에서 후보 4개 비교</text>
+  <text x="56" y="52" font-size="11" fill="#777">RTX 4080 Laptop 12GB, context 16,384. 막대는 생성 속도, 오른쪽은 VRAM 적재율</text>
+
+  <g stroke="#e8e8e8" stroke-width="1">
+    <line x1="232" y1="96" x2="560" y2="96"/>
+    <line x1="232" y1="146" x2="560" y2="146"/>
+    <line x1="232" y1="196" x2="560" y2="196"/>
+    <line x1="232" y1="246" x2="560" y2="246"/>
+  </g>
+
+  <!-- ornith-1.5:9b — 100% GPU, 54.8 -->
+  <text x="222" y="92" font-size="11" fill="#333" text-anchor="end">ornith-1.5:9b</text>
+  <text x="222" y="105" font-size="9.5" fill="#999" text-anchor="end">Q4_K_M · 5.7GB</text>
+  <rect x="232" y="82" width="272" height="24" fill="#2d5f8a"/>
+  <text x="240" y="99" font-size="10.5" fill="#ffffff">54.4 tok/s</text>
+  <text x="516" y="99" font-size="10.5" font-weight="600" fill="#2d5f8a">100% GPU</text>
+
+  <!-- ornith:9b-q8_0 — 100% GPU, 42.5 -->
+  <text x="222" y="142" font-size="11" fill="#333" text-anchor="end">ornith:9b-q8_0</text>
+  <text x="222" y="155" font-size="9.5" fill="#999" text-anchor="end">Q8_0 · 8.5GB</text>
+  <rect x="232" y="132" width="205" height="24" fill="#7ba3c4"/>
+  <text x="240" y="149" font-size="10.5" fill="#ffffff">41.0 tok/s</text>
+  <text x="516" y="149" font-size="10.5" font-weight="600" fill="#2d5f8a">100% GPU</text>
+
+  <!-- granite4.2:8b-q8_0 — 85% GPU, 27.1 -->
+  <text x="222" y="192" font-size="11" fill="#333" text-anchor="end">granite4.2:8b-q8_0</text>
+  <text x="222" y="205" font-size="9.5" fill="#999" text-anchor="end">Q8_0 · 9.3GB</text>
+  <rect x="232" y="182" width="134" height="24" fill="#c9a389"/>
+  <text x="240" y="199" font-size="10.5" fill="#ffffff">26.8 tok/s</text>
+  <text x="516" y="199" font-size="10.5" font-weight="600" fill="#b07a57">85% — CPU로 밀림</text>
+
+  <!-- granite4.2:30b-q2_K — 68% GPU, 10.7 -->
+  <text x="222" y="242" font-size="11" fill="#333" text-anchor="end">granite4.2:30b-q2_K</text>
+  <text x="222" y="255" font-size="9.5" fill="#999" text-anchor="end">Q2_K · 10GB</text>
+  <rect x="232" y="232" width="52" height="24" fill="#d6b9a6"/>
+  <text x="290" y="249" font-size="10.5" fill="#666">10.4 tok/s</text>
+  <text x="516" y="249" font-size="10.5" font-weight="600" fill="#b07a57">68% — CPU로 밀림</text>
+
+  <text x="56" y="284" font-size="10.5" fill="#777">30B을 2비트로 욱여넣는 것보다, 9B을 4비트로 통째로 GPU에 올리는 쪽이 5배 빠르다.</text>
+</svg>
