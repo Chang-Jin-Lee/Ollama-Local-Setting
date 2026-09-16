@@ -8,18 +8,29 @@
 pwsh -File bench/ctx-sweep.ps1 -Model <모델명>
 ```
 
-context를 훑으면서 `ollama ps`의 PROCESSOR가 `100% GPU`를 유지하는 최대값을 찾아준다. 이 값이 곧 그 카드의 설정값.
+context를 훑으면서 한계선을 찾아준다. 이 값이 곧 그 카드의 설정값.
 
-VRAM이 16GB보다 작으면 모델부터 바꿔야 한다. 대략적인 기준은 이렇다.
+판정은 `ollama ps`의 `100% GPU`만으로 하지 않는다. Windows에서는 그게 거짓말일 수 있어서(README의 해당 항목 참고) 러너의 공유 메모리 사용량을 같이 본다.
 
-| VRAM | 해볼 만한 것 |
+**전체 VRAM이 아니라 여유 VRAM으로 골라야 한다.** 데스크톱이 먹는 양을 먼저 빼라.
+
+```powershell
+nvidia-smi --query-gpu=memory.free --format=csv
+```
+
+RTX 4060 Ti 16GB에서 Chrome과 Docker를 켜두면 여유가 13,330 MiB였다. IQ4_XS 파일이 13,593 MiB니 **가중치만으로 이미 100%를 넘긴다.** 16GB 카드인데도 14GB 모델이 안 들어간 것. 대략적인 기준은 이렇다.
+
+| 여유 VRAM | 해볼 만한 것 |
 |---|---|
-| 24GB 이상 | Qwen3.8-27B Q4_K_M (18GB), context도 여유 |
-| 16GB | Qwen3.8-27B IQ4_XS (14GB) — 이 저장소 기본값 |
-| 12GB | Qwen3.8-27B UD-IQ3_S (12GB) 또는 gpt-oss:20b |
+| 22GB 이상 | Qwen3.8-27B Q4_K_M (15.3GB), context도 여유 |
+| 15GB | Qwen3.8-27B IQ4_XS (13.3GB) |
+| 13GB | Qwen3.8-27B UD-IQ3_S (11.2GB) — 4060 Ti에서 이게 제일 나았다 |
+| 11GB | Qwen3.8-27B UD-IQ3_XXS (10.2GB) |
 | 8GB | 14B 이하 |
 
-Unsloth의 [GGUF 저장소](https://huggingface.co/unsloth/Qwen3.8-27B-GGUF)에 양자화별 파일이 다 있다. 파일 크기가 VRAM보다 2~3GB 작은 걸 고르면 KV cache와 계산 버퍼 자리가 남는다.
+Unsloth의 [GGUF 저장소](https://huggingface.co/unsloth/Qwen3.8-27B-GGUF)에 양자화별 파일이 다 있다. 파일 크기가 **여유** VRAM보다 2GB 이상 작은 걸 고르면 KV cache와 계산 버퍼 자리가 남는다.
+
+**한 단계 내리는 걸 손해라고 생각하지 마라.** 4060 Ti에서는 IQ3_S가 IQ4_XS보다 빠르고(20.6 대 17.8 tok/s), context도 3배 길고(49K 대 16K), 코딩 문제도 더 많이 맞혔다(10/10 대 9/10). 억지로 큰 걸 욱여넣는 것보다 낫다.
 
 ## 2. 속도와 코딩 능력 재기
 

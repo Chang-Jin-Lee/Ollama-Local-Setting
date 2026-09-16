@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="300" viewBox="0 0 620 300" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <rect width="620" height="300" fill="#ffffff"/>
+  <text x="56" y="34" font-size="14" font-weight="600" fill="#1a1a1a">알고리즘 10문제 — RTX 4060 Ti 16GB</text>
+  <text x="56" y="52" font-size="11" fill="#777">같은 카드, 같은 문제, 같은 채점. 양자화만 바꿨다</text>
+
+  <g stroke="#e8e8e8" stroke-width="1">
+    <line x1="230" y1="92" x2="540" y2="92"/>
+    <line x1="230" y1="142" x2="540" y2="142"/>
+    <line x1="230" y1="192" x2="540" y2="192"/>
+  </g>
+
+  <!-- IQ3_S thinking ON : 10/10 -->
+  <text x="218" y="96" font-size="11" fill="#333" text-anchor="end">IQ3_S · thinking ON</text>
+  <rect x="230" y="80" width="310" height="24" rx="4" fill="#eb6834"/>
+  <text x="550" y="97" font-size="12" font-weight="600" fill="#1a1a1a">10 / 10</text>
+  <text x="238" y="97" font-size="10" fill="#ffffff">문제당 60초 · 20.8 tok/s</text>
+
+  <!-- IQ3_S thinking OFF : 10/10 -->
+  <text x="218" y="146" font-size="11" fill="#333" text-anchor="end">IQ3_S · thinking OFF</text>
+  <rect x="230" y="130" width="310" height="24" rx="4" fill="#f0a882"/>
+  <text x="550" y="147" font-size="12" font-weight="600" fill="#1a1a1a">10 / 10</text>
+  <text x="238" y="147" font-size="10" fill="#7a3a17">문제당 26초 · 21.2 tok/s</text>
+
+  <!-- IQ4_XS thinking ON : 9/10 -->
+  <text x="218" y="196" font-size="11" fill="#333" text-anchor="end">IQ4_XS · thinking ON</text>
+  <rect x="230" y="180" width="279" height="24" rx="4" fill="#2a78d6"/>
+  <text x="519" y="197" font-size="12" font-weight="600" fill="#1a1a1a">9 / 10</text>
+  <text x="238" y="197" font-size="10" fill="#ffffff">문제당 74초 · 18.1 tok/s</text>
+
+  <line x1="230" y1="216" x2="540" y2="216" stroke="#999" stroke-width="1"/>
+  <g font-size="10" fill="#999" text-anchor="middle">
+    <text x="230" y="231">0</text>
+    <text x="385" y="231">5</text>
+    <text x="540" y="231">10</text>
+  </g>
+  <text x="385" y="249" font-size="10" fill="#777" text-anchor="middle">통과한 문제 수 (숨긴 테스트를 실제로 실행해 판정)</text>
+  <text x="56" y="276" font-size="10" fill="#aaa">IQ4_XS의 유일한 실패는 정수 계산기 파서. thinking 16,285자를 쓰고 4,096토큰 한도에 걸려 답변이 0자였다.</text>
+  <text x="56" y="290" font-size="10" fill="#aaa">IQ3_S는 같은 문제를 thinking 5,070자로 끝내고 통과했다. 파일이 2GB 작은 쪽이 더 빠르고 더 많이 맞혔다.</text>
+</svg>

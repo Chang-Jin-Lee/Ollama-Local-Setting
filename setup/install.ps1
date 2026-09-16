@@ -32,11 +32,18 @@ foreach ($cmd in 'ollama', 'curl') {
     if (-not (Get-Command $cmd -ErrorAction SilentlyContinue)) { throw "$cmd 를 찾을 수 없습니다." }
 }
 ollama --version
-$vram = (nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits 2>$null) -as [int]
-if ($vram) { Write-Host "VRAM: $vram MiB" }
-if ($vram -and $vram -lt 15000) {
-    Write-Warning "VRAM이 15GB 미만입니다. IQ4_XS(13.3GiB)가 다 안 들어갈 수 있습니다."
-    Write-Warning "README의 '내 GPU는 VRAM이 다른데요' 항목을 참고하세요."
+# 전체 VRAM 이 아니라 '여유' VRAM 으로 판단해야 합니다. 브라우저와 데스크톱이
+# 먹는 양을 빼고 나면 16GB 카드에서도 13.3GiB 모델이 안 들어가는 경우가 있습니다.
+$vramTotal = (nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits 2>$null) -as [int]
+$vramFree  = (nvidia-smi --query-gpu=memory.free  --format=csv,noheader,nounits 2>$null) -as [int]
+if ($vramTotal) { Write-Host "VRAM: $vramFree MiB 여유 / $vramTotal MiB 전체" }
+
+$modelMiB = 13593   # Qwen3.8-27B UD-IQ4_XS
+if ($vramFree -and $vramFree -lt ($modelMiB + 1500)) {
+    Write-Warning "여유 VRAM이 $vramFree MiB 입니다. IQ4_XS($modelMiB MiB)를 올리면 KV cache 자리가 부족합니다."
+    Write-Warning "`ollama ps` 가 100% GPU 라고 해도 실제로는 시스템 RAM 으로 새면서 속도가 반토막 납니다."
+    Write-Warning "브라우저를 닫아 VRAM 을 확보하거나, UD-IQ3_S(11,483 MiB)로 내리세요."
+    Write-Warning "자세한 건 README 의 '`ollama ps` 의 100% GPU 를 믿으면 안 된다' 항목을 보세요."
 }
 
 # --- 1. 환경변수 ----------------------------------------------------------
