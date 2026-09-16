@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="360" viewBox="0 0 620 360" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <rect width="620" height="360" fill="#ffffff"/>
+  <text x="56" y="34" font-size="14" font-weight="600" fill="#1a1a1a">context 길이별 생성 속도 — RTX 4060 Ti 16GB</text>
+  <text x="56" y="52" font-size="11" fill="#777">한 단계 낮은 양자화가 더 빠르고 context도 3배까지 올라간다</text>
+
+  <!-- y축 격자 -->
+  <g stroke="#e8e8e8" stroke-width="1">
+    <line x1="70" y1="250" x2="580" y2="250"/>
+    <line x1="70" y1="214" x2="580" y2="214"/>
+    <line x1="70" y1="178" x2="580" y2="178"/>
+    <line x1="70" y1="142" x2="580" y2="142"/>
+    <line x1="70" y1="106" x2="580" y2="106"/>
+    <line x1="70" y1="70"  x2="580" y2="70"/>
+  </g>
+  <g font-size="10" fill="#999" text-anchor="end">
+    <text x="62" y="254">0</text>
+    <text x="62" y="218">5</text>
+    <text x="62" y="182">10</text>
+    <text x="62" y="146">15</text>
+    <text x="62" y="110">20</text>
+    <text x="62" y="74">25</text>
+  </g>
+  <text x="20" y="160" font-size="10" fill="#777" transform="rotate(-90 20 160)" text-anchor="middle">tok/s</text>
+
+  <!-- 절벽 표시 -->
+  <line x1="197.5" y1="66" x2="197.5" y2="258" stroke="#2a78d6" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="452.5" y1="66" x2="452.5" y2="258" stroke="#eb6834" stroke-width="1" stroke-dasharray="3 3"/>
+
+  <!-- IQ3_S (슬롯2 주황) -->
+  <polyline fill="none" stroke="#eb6834" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+            points="133.8,100.2 197.5,101.0 261.3,100.2 325,100.2 388.8,101.0 452.5,101.0 516.3,131.2 580,147.0"/>
+  <g fill="#eb6834" stroke="#ffffff" stroke-width="2">
+    <circle cx="133.8" cy="100.2" r="4.5"/><circle cx="197.5" cy="101.0" r="4.5"/>
+    <circle cx="261.3" cy="100.2" r="4.5"/><circle cx="325" cy="100.2" r="4.5"/>
+    <circle cx="388.8" cy="101.0" r="4.5"/><circle cx="452.5" cy="101.0" r="4.5"/>
+    <circle cx="516.3" cy="131.2" r="4.5"/><circle cx="580" cy="147.0" r="4.5"/>
+  </g>
+
+  <!-- IQ4_XS (슬롯1 파랑) -->
+  <polyline fill="none" stroke="#2a78d6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+            points="133.8,121.1 197.5,121.1 229.4,137.0 261.3,148.5 325,158.6"/>
+  <g fill="#2a78d6" stroke="#ffffff" stroke-width="2">
+    <circle cx="133.8" cy="121.1" r="4.5"/><circle cx="197.5" cy="121.1" r="4.5"/>
+    <circle cx="229.4" cy="137.0" r="4.5"/><circle cx="261.3" cy="148.5" r="4.5"/>
+    <circle cx="325" cy="158.6" r="4.5"/>
+  </g>
+
+  <!-- 직접 라벨 -->
+  <text x="300" y="92" font-size="11" font-weight="600" fill="#1a1a1a">IQ3_S · 20.8 tok/s 유지</text>
+  <text x="140" y="115" font-size="11" font-weight="600" fill="#1a1a1a">IQ4_XS · 17.9</text>
+  <text x="333" y="172" font-size="10" fill="#777">12.7</text>
+  <text x="580" y="163" font-size="10" fill="#777" text-anchor="end">14.3</text>
+
+  <!-- 절벽 라벨 -->
+  <text x="193" y="272" font-size="10" fill="#2a78d6" text-anchor="end">IQ4_XS 한계 16K</text>
+  <text x="457" y="272" font-size="10" fill="#eb6834">IQ3_S 한계 49K</text>
+
+  <line x1="70" y1="250" x2="580" y2="250" stroke="#999" stroke-width="1"/>
+  <g font-size="10" fill="#555" text-anchor="middle">
+    <text x="133.8" y="266">8K</text>
+    <text x="261.3" y="266">24K</text>
+    <text x="325" y="266">32K</text>
+    <text x="388.8" y="266">40K</text>
+    <text x="516.3" y="266">56K</text>
+    <text x="580" y="266">64K</text>
+  </g>
+  <text x="325" y="290" font-size="10" fill="#777" text-anchor="middle">context 길이</text>
+
+  <!-- 범례 -->
+  <g font-size="11" fill="#333">
+    <rect x="70" y="308" width="10" height="10" fill="#eb6834"/>
+    <text x="86" y="317">Qwen3.8-27B UD-IQ3_S (11.21 GiB)</text>
+    <rect x="300" y="308" width="10" height="10" fill="#2a78d6"/>
+    <text x="316" y="317">Qwen3.8-27B UD-IQ4_XS (13.27 GiB)</text>
+  </g>
+  <text x="56" y="342" font-size="10" fill="#aaa">300토큰 생성 · Flash Attention + q8_0 KV cache · 점선 오른쪽은 시스템 RAM으로 밀려나 속도가 떨어지는 구간</text>
+</svg>
