@@ -54,6 +54,22 @@ function Get-RunnerMemory {
     [pscustomobject]@{ LocalMB = [math]::Round($local / 1MB, 0); SharedMB = [math]::Round($shared / 1MB, 0) }
 }
 
+# 언로드 요청이 돌아와도 러너가 VRAM 을 바로 놓지는 않습니다. 안 기다리고 다음
+# context 를 올리면 앞 할당이 남은 채로 겹쳐 올라가 한 지점만 공유 메모리로 새고
+# 속도가 3분의 1로 떨어집니다(122,880 에서 2,314MB / 15.3 tok/s 를 한 번 봤는데,
+# 다시 재보니 762MB / 54.8 tok/s 였습니다). 러너가 정리될 때까지 기다립니다.
+function Wait-RunnerGone {
+    param([int]$TimeoutSec = 60)
+    $sw = [Diagnostics.Stopwatch]::StartNew()
+    while ($sw.Elapsed.TotalSeconds -lt $TimeoutSec) {
+        $loaded = (Invoke-RestMethod -Uri "$api/api/ps").models
+        $procs  = Get-Process -Name 'llama-server', 'ollama_llama_server' -ErrorAction SilentlyContinue
+        if (-not $loaded -and -not $procs) { Start-Sleep -Milliseconds 500; return }
+        Start-Sleep -Milliseconds 500
+    }
+    Write-Warning "러너가 $TimeoutSec 초 안에 정리되지 않았습니다. 이번 측정은 앞 할당과 겹칠 수 있습니다."
+}
+
 function Invoke-Gen($text, $predict, $ctx) {
     $body = @{
         model      = $Model
@@ -75,6 +91,7 @@ foreach ($ctx in $SizeList) {
         $b = @{ model = $prev.name; keep_alive = 0 } | ConvertTo-Json
         try { Invoke-RestMethod -Uri "$api/api/generate" -Method Post -Body $b -ContentType 'application/json' -TimeoutSec 120 | Out-Null } catch {}
     }
+    Wait-RunnerGone
 
     try {
         $r = Invoke-Gen $prompt $Tokens $ctx
