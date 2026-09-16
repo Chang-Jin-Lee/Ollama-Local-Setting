@@ -1,0 +1,46 @@
+name: GPU 측정 결과 공유
+description: 내 그래픽카드에서 나온 설정과 속도를 공유합니다
+title: "[결과] "
+labels: ["result"]
+body:
+  - type: input
+    id: gpu
+    attributes:
+      label: GPU / VRAM
+      placeholder: "RTX 4080 16GB"
+    validations:
+      required: true
+  - type: input
+    id: model
+    attributes:
+      label: 모델과 양자화
+      placeholder: "Qwen3.8-27B UD-IQ4_XS, 14GB"
+    validations:
+      required: true
+  - type: input
+    id: ctx
+    attributes:
+      label: 100% GPU를 유지하는 최대 context
+      placeholder: "24576"
+    validations:
+      required: true
+  - type: input
+    id: speed
+    attributes:
+      label: 생성 속도 / 프롬프트 처리 속도
+      placeholder: "41.0 tok/s / 840 tok/s"
+  - type: input
+    id: coding
+    attributes:
+      label: bench/run.py 통과 개수
+      placeholder: "9 / 10"
+  - type: textarea
+    id: env
+    attributes:
+      label: 환경
+      placeholder: "CPU, RAM, OS, Ollama 버전, 드라이버 버전"
+  - type: textarea
+    id: notes
+    attributes:
+      label: 막혔던 것 / 이상했던 것
+      description: 실패한 설정이 제일 쓸모 있습니다

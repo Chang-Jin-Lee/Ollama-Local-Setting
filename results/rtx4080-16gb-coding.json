@@ -1,0 +1,92 @@
+[
+  {
+    "id": "lru_cache",
+    "pass": true,
+    "err": "",
+    "sec": 30.5,
+    "out_tokens": 1033,
+    "tps": 40.5,
+    "think_chars": 2238
+  },
+  {
+    "id": "longest_valid_parens",
+    "pass": true,
+    "err": "",
+    "sec": 18.8,
+    "out_tokens": 746,
+    "tps": 40.3,
+    "think_chars": 1873
+  },
+  {
+    "id": "median_two_sorted",
+    "pass": true,
+    "err": "",
+    "sec": 25.9,
+    "out_tokens": 1037,
+    "tps": 40.4,
+    "think_chars": 2447
+  },
+  {
+    "id": "calc",
+    "pass": false,
+    "err": "NameError: name 'evaluate' is not defined",
+    "sec": 101.9,
+    "out_tokens": 4096,
+    "tps": 40.3,
+    "think_chars": 15699
+  },
+  {
+    "id": "serialize_tree",
+    "pass": true,
+    "err": "",
+    "sec": 16.6,
+    "out_tokens": 664,
+    "tps": 40.7,
+    "think_chars": 1675
+  },
+  {
+    "id": "stock_k",
+    "pass": true,
+    "err": "",
+    "sec": 20.8,
+    "out_tokens": 837,
+    "tps": 40.7,
+    "think_chars": 2076
+  },
+  {
+    "id": "regex",
+    "pass": true,
+    "err": "",
+    "sec": 39.5,
+    "out_tokens": 1594,
+    "tps": 40.6,
+    "think_chars": 4491
+  },
+  {
+    "id": "toposort",
+    "pass": true,
+    "err": "",
+    "sec": 16.6,
+    "out_tokens": 666,
+    "tps": 40.8,
+    "think_chars": 1756
+  },
+  {
+    "id": "word_break",
+    "pass": true,
+    "err": "",
+    "sec": 26.0,
+    "out_tokens": 1046,
+    "tps": 40.7,
+    "think_chars": 3275
+  },
+  {
+    "id": "thread_safe_counter",
+    "pass": true,
+    "err": "",
+    "sec": 8.2,
+    "out_tokens": 322,
+    "tps": 40.7,
+    "think_chars": 666
+  }
+]

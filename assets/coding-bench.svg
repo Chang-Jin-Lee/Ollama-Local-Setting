@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="290" viewBox="0 0 620 290" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <rect width="620" height="290" fill="#ffffff"/>
+  <text x="56" y="34" font-size="14" font-weight="600" fill="#1a1a1a">알고리즘 10문제 — 코드를 실제로 실행해서 채점</text>
+  <text x="56" y="52" font-size="11" fill="#777">LeetCode Hard급 10문제, 숨긴 테스트 통과 여부로 판정</text>
+
+  <g stroke="#e8e8e8" stroke-width="1">
+    <line x1="210" y1="90" x2="520" y2="90"/>
+    <line x1="210" y1="140" x2="520" y2="140"/>
+    <line x1="210" y1="190" x2="520" y2="190"/>
+  </g>
+
+  <!-- 행 1: thinking ON 9/10 -->
+  <text x="198" y="94" font-size="11" fill="#333" text-anchor="end">Qwen3.8 IQ4 · thinking ON</text>
+  <rect x="210" y="78" width="279" height="24" fill="#2d5f8a"/>
+  <text x="499" y="95" font-size="12" font-weight="600" fill="#1a1a1a">9 / 10</text>
+  <text x="218" y="95" font-size="10" fill="#ffffff">문제당 30초</text>
+
+  <!-- 행 2: thinking OFF 6/10 -->
+  <text x="198" y="144" font-size="11" fill="#333" text-anchor="end">Qwen3.8 IQ4 · thinking OFF</text>
+  <rect x="210" y="128" width="186" height="24" fill="#7ba3c4"/>
+  <text x="406" y="145" font-size="12" font-weight="600" fill="#1a1a1a">6 / 10</text>
+  <text x="218" y="145" font-size="10" fill="#ffffff">문제당 9초</text>
+
+  <!-- 행 3: qwen3:4b 2/10 -->
+  <text x="198" y="194" font-size="11" fill="#333" text-anchor="end">Qwen3 4B (대조군)</text>
+  <rect x="210" y="178" width="62" height="24" fill="#cccccc"/>
+  <text x="282" y="195" font-size="12" font-weight="600" fill="#1a1a1a">2 / 10</text>
+
+  <line x1="210" y1="215" x2="520" y2="215" stroke="#999" stroke-width="1"/>
+  <g font-size="10" fill="#999" text-anchor="middle">
+    <text x="210" y="230">0</text>
+    <text x="365" y="230">5</text>
+    <text x="520" y="230">10</text>
+  </g>
+  <text x="365" y="248" font-size="10" fill="#777" text-anchor="middle">통과한 문제 수</text>
+  <text x="56" y="274" font-size="10" fill="#aaa">유일한 실패: 정수 계산기 파서 — thinking이 42,940자를 돌고도 답을 못 냈다. thinking을 끄면 41초에 통과.</text>
+</svg>

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="420" viewBox="0 0 620 420" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <rect width="620" height="420" fill="#ffffff"/>
+  <text x="56" y="34" font-size="14" font-weight="600" fill="#1a1a1a">상용 모델과 비교 — Artificial Analysis 지능 지수</text>
+  <text x="56" y="52" font-size="11" fill="#777">2026년 9월 기준. 로컬 모델 하나가 어디쯤 서는지 보기 위한 좌표</text>
+
+  <g font-size="11">
+    <!-- 각 행: label(x=196, anchor=end), bar(x=206, w=score*5), value -->
+    <text x="196" y="82" fill="#555" text-anchor="end">GPT-5.6 Sol</text>
+    <rect x="206" y="71" width="294" height="15" fill="#e0e0e0"/><text x="508" y="82" fill="#777">58.9</text>
+
+    <text x="196" y="106" fill="#555" text-anchor="end">Claude Fable 5.1</text>
+    <rect x="206" y="95" width="267" height="15" fill="#e0e0e0"/><text x="481" y="106" fill="#777">53.4</text>
+
+    <text x="196" y="130" fill="#555" text-anchor="end">GPT-5.6 Luna</text>
+    <rect x="206" y="119" width="256" height="15" fill="#e0e0e0"/><text x="470" y="130" fill="#777">51.2</text>
+
+    <text x="196" y="154" fill="#555" text-anchor="end">Claude Opus 5</text>
+    <rect x="206" y="143" width="254" height="15" fill="#e0e0e0"/><text x="468" y="154" fill="#777">50.7</text>
+
+    <text x="196" y="178" fill="#555" text-anchor="end">Claude Opus 4.8</text>
+    <rect x="206" y="167" width="210" height="15" fill="#e0e0e0"/><text x="424" y="178" fill="#777">42.0</text>
+
+    <text x="196" y="202" fill="#555" text-anchor="end">GPT-5.4</text>
+    <rect x="206" y="191" width="195" height="15" fill="#e0e0e0"/><text x="409" y="202" fill="#777">39.0</text>
+
+    <text x="196" y="226" fill="#555" text-anchor="end">GPT-5.5</text>
+    <rect x="206" y="215" width="193" height="15" fill="#e0e0e0"/><text x="407" y="226" fill="#777">38.6</text>
+
+    <text x="196" y="250" fill="#555" text-anchor="end">Claude Sonnet 5</text>
+    <rect x="206" y="239" width="192" height="15" fill="#e0e0e0"/><text x="406" y="250" fill="#777">38.4</text>
+
+    <!-- 강조 행 -->
+    <rect x="56" y="258" width="520" height="24" fill="#f4f8fb"/>
+    <text x="196" y="275" fill="#1a1a1a" font-weight="600" text-anchor="end">Qwen3.8-27B (로컬)</text>
+    <rect x="206" y="264" width="170" height="15" fill="#2d5f8a"/><text x="384" y="275" fill="#1a1a1a" font-weight="600">33.9</text>
+
+    <text x="196" y="302" fill="#555" text-anchor="end">GPT-5.3 Codex</text>
+    <rect x="206" y="291" width="163" height="15" fill="#e0e0e0"/><text x="377" y="302" fill="#777">32.5</text>
+
+    <text x="196" y="326" fill="#555" text-anchor="end">Claude Opus 4.6</text>
+    <rect x="206" y="315" width="160" height="15" fill="#e0e0e0"/><text x="374" y="326" fill="#777">31.9</text>
+
+    <text x="196" y="350" fill="#555" text-anchor="end">Claude Opus 4.5 Thinking</text>
+    <rect x="206" y="339" width="146" height="15" fill="#e0e0e0"/><text x="360" y="350" fill="#777">29.1</text>
+
+    <text x="196" y="374" fill="#555" text-anchor="end">Claude Sonnet 4.6</text>
+    <rect x="206" y="363" width="124" height="15" fill="#e0e0e0"/><text x="338" y="374" fill="#777">24.7</text>
+  </g>
+
+  <text x="56" y="404" font-size="10" fill="#aaa">출처: benchlm.ai/benchmarks/artificialanalysis · Qwen 점수는 원본 모델 기준이므로 IQ4는 조금 아래로 보는 편이 안전하다</text>
+</svg>

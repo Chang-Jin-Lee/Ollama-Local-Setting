@@ -1,0 +1,22 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": ["~/.config/opencode/node_modules/superpowers"],
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama (local)",
+      "options": {
+        "baseURL": "http://127.0.0.1:11434/v1"
+      },
+      "models": {
+        "qwen3.8-iq4:latest": {
+          "name": "Qwen3.8-27B IQ4 (local)",
+          "tool_call": true,
+          "reasoning": true,
+          "limit": { "context": 24576, "output": 8192 }
+        }
+      }
+    }
+  },
+  "model": "ollama/qwen3.8-iq4:latest"
+}

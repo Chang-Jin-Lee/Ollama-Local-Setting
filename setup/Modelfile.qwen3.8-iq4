@@ -1,0 +1,16 @@
+FROM ./Qwen3.8-27B-UD-IQ4_XS.gguf
+
+# 공식 qwen3.8:27b와 동일한 렌더러/파서 (thinking, tool calling 처리)
+RENDERER qwen3.8
+PARSER qwen3.5
+
+# 공식 qwen3.8:27b 기본 파라미터
+PARAMETER temperature 1
+PARAMETER top_k 20
+PARAMETER top_p 0.95
+PARAMETER min_p 0
+PARAMETER presence_penalty 0
+PARAMETER repeat_penalty 1
+
+# 16GB VRAM 기준 시작값
+PARAMETER num_ctx 24576
