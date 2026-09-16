@@ -1,0 +1,374 @@
+{
+  "gpu": "NVIDIA GeForce RTX 4080 Laptop GPU (12,282 MiB)",
+  "ollama": "0.33.3",
+  "harness": "bench/run.py — 모델이 낸 코드를 파일로 저장해 숨긴 테스트와 함께 실행",
+  "runs": {
+    "ornith-1.5:9b / thinking ON  / PREDICT=8192": {
+      "passed": 7,
+      "total": 10,
+      "aborted": 0,
+      "truncated_failures": 2,
+      "avg_sec_per_task": 38.9,
+      "tasks": [
+        {
+          "id": "lru_cache",
+          "pass": true,
+          "err": "",
+          "sec": 22.6,
+          "out_tokens": 1209,
+          "tps": 54.5,
+          "done_reason": "stop",
+          "truncated": false,
+          "think_chars": 2979
+        },
+        {
+          "id": "longest_valid_parens",
+          "pass": true,
+          "err": "",
+          "sec": 17.5,
+          "out_tokens": 947,
+          "tps": 54.3,
+          "done_reason": "stop",
+          "truncated": false,
+          "think_chars": 2065
+        },
+        {
+          "id": "median_two_sorted",
+          "pass": false,
+          "err": "AssertionError",
+          "sec": 19.4,
+          "out_tokens": 1054,
+          "tps": 54.6,
+          "done_reason": "stop",
+          "truncated": false,
+          "think_chars": 2119
+        },
+        {
+          "id": "calc",
+          "pass": true,
+          "err": "",
+          "sec": 70.4,
+          "out_tokens": 3995,
+          "tps": 56.8,
+          "done_reason": "length",
+          "truncated": true,
+          "think_chars": 0
+        },
+        {
+          "id": "serialize_tree",
+          "pass": true,
+          "err": "",
+          "sec": 28.4,
+          "out_tokens": 1654,
+          "tps": 58.3,
+          "done_reason": "stop",
+          "truncated": false,
+          "think_chars": 4461
+        },
+        {
+          "id": "stock_k",
+          "pass": true,
+          "err": "",
+          "sec": 49.7,
+          "out_tokens": 2951,
+          "tps": 59.4,
+          "done_reason": "stop",
+          "truncated": false,
+          "think_chars": 6843
+        },
+        {
+          "id": "regex",
+          "pass": false,
+          "err": "TRUNCATED at 4009 tok (PREDICT=8192)",
+          "sec": 68.6,
+          "out_tokens": 4009,
+          "tps": 58.6,
+          "done_reason": "length",
+          "truncated": true,
+          "think_chars": 0
+        },
+        {
+          "id": "toposort",
+          "pass": true,
+          "err": "",
+          "sec": 14.3,
+          "out_tokens": 765,
+          "tps": 53.8,
+          "done_reason": "stop",
+          "truncated": false,
+          "think_chars": 2034
+        },
+        {
+          "id": "word_break",
+          "pass": false,
+          "err": "TRUNCATED at 4023 tok (PREDICT=8192)",
+          "sec": 69.8,
+          "out_tokens": 4023,
+          "tps": 57.7,
+          "done_reason": "length",
+          "truncated": true,
+          "think_chars": 0
+        },
+        {
+          "id": "thread_safe_counter",
+          "pass": true,
+          "err": "",
+          "sec": 27.8,
+          "out_tokens": 1479,
+          "tps": 53.5,
+          "done_reason": "stop",
+          "truncated": false,
+          "think_chars": 4952
+        }
+      ]
+    },
+    "ornith-1.5:9b / thinking OFF / PREDICT=4096": {
+      "passed": 6,
+      "total": 10,
+      "aborted": 1,
+      "truncated_failures": 0,
+      "avg_sec_per_task": 13.2,
+      "tasks": [
+        {
+          "id": "lru_cache",
+          "pass": true,
+          "err": "",
+          "sec": 11.7,
+          "out_tokens": 464,
+          "tps": 55.1,
+          "done_reason": "stop",
+          "truncated": false,
+          "aborted": false,
+          "think_chars": 0
+        },
+        {
+          "id": "longest_valid_parens",
+          "pass": true,
+          "err": "",
+          "sec": 4.4,
+          "out_tokens": 236,
+          "tps": 54.8,
+          "done_reason": "stop",
+          "truncated": false,
+          "aborted": false,
+          "think_chars": 0
+        },
+        {
+          "id": "median_two_sorted",
+          "pass": false,
+          "err": "ABORTED (done:false, 792자에서 끊김)",
+          "sec": 5.7,
+          "out_tokens": 0,
+          "tps": 0.0,
+          "done_reason": null,
+          "truncated": false,
+          "aborted": true,
+          "think_chars": 0
+        },
+        {
+          "id": "calc",
+          "pass": false,
+          "err": "SyntaxError: invalid syntax",
+          "sec": 69.4,
+          "out_tokens": 3684,
+          "tps": 53.2,
+          "done_reason": "stop",
+          "truncated": false,
+          "aborted": false,
+          "think_chars": 0
+        },
+        {
+          "id": "serialize_tree",
+          "pass": true,
+          "err": "",
+          "sec": 11.0,
+          "out_tokens": 581,
+          "tps": 53.6,
+          "done_reason": "stop",
+          "truncated": false,
+          "aborted": false,
+          "think_chars": 0
+        },
+        {
+          "id": "stock_k",
+          "pass": true,
+          "err": "",
+          "sec": 7.9,
+          "out_tokens": 418,
+          "tps": 53.8,
+          "done_reason": "stop",
+          "truncated": false,
+          "aborted": false,
+          "think_chars": 0
+        },
+        {
+          "id": "regex",
+          "pass": false,
+          "err": "AssertionError",
+          "sec": 5.2,
+          "out_tokens": 272,
+          "tps": 53.8,
+          "done_reason": "stop",
+          "truncated": false,
+          "aborted": false,
+          "think_chars": 0
+        },
+        {
+          "id": "toposort",
+          "pass": false,
+          "err": "NameError: name 'result' is not defined",
+          "sec": 5.6,
+          "out_tokens": 296,
+          "tps": 54.0,
+          "done_reason": "stop",
+          "truncated": false,
+          "aborted": false,
+          "think_chars": 0
+        },
+        {
+          "id": "word_break",
+          "pass": true,
+          "err": "",
+          "sec": 4.6,
+          "out_tokens": 244,
+          "tps": 54.3,
+          "done_reason": "stop",
+          "truncated": false,
+          "aborted": false,
+          "think_chars": 0
+        },
+        {
+          "id": "thread_safe_counter",
+          "pass": true,
+          "err": "",
+          "sec": 6.9,
+          "out_tokens": 362,
+          "tps": 53.8,
+          "done_reason": "stop",
+          "truncated": false,
+          "aborted": false,
+          "think_chars": 0
+        }
+      ]
+    },
+    "ornith:9b-q8_0 / thinking ON / PREDICT=8192": {
+      "passed": 9,
+      "total": 10,
+      "aborted": 0,
+      "truncated_failures": 0,
+      "avg_sec_per_task": 16.7,
+      "tasks": [
+        {
+          "id": "lru_cache",
+          "pass": true,
+          "err": "",
+          "sec": 15.7,
+          "out_tokens": 332,
+          "tps": 40.8,
+          "done_reason": "stop",
+          "truncated": false,
+          "think_chars": 504
+        },
+        {
+          "id": "longest_valid_parens",
+          "pass": true,
+          "err": "",
+          "sec": 6.4,
+          "out_tokens": 251,
+          "tps": 40.2,
+          "done_reason": "stop",
+          "truncated": false,
+          "think_chars": 583
+        },
+        {
+          "id": "median_two_sorted",
+          "pass": true,
+          "err": "",
+          "sec": 10.7,
+          "out_tokens": 425,
+          "tps": 40.2,
+          "done_reason": "stop",
+          "truncated": false,
+          "think_chars": 578
+        },
+        {
+          "id": "calc",
+          "pass": false,
+          "err": "UnboundLocalError: cannot access local variable 'tokenize' where it is not associated with a value",
+          "sec": 33.5,
+          "out_tokens": 1393,
+          "tps": 41.8,
+          "done_reason": "stop",
+          "truncated": false,
+          "think_chars": 3356
+        },
+        {
+          "id": "serialize_tree",
+          "pass": true,
+          "err": "",
+          "sec": 16.5,
+          "out_tokens": 650,
+          "tps": 39.7,
+          "done_reason": "stop",
+          "truncated": false,
+          "think_chars": 1102
+        },
+        {
+          "id": "stock_k",
+          "pass": true,
+          "err": "",
+          "sec": 44.2,
+          "out_tokens": 1812,
+          "tps": 41.1,
+          "done_reason": "stop",
+          "truncated": false,
+          "think_chars": 4517
+        },
+        {
+          "id": "regex",
+          "pass": true,
+          "err": "",
+          "sec": 19.0,
+          "out_tokens": 803,
+          "tps": 42.6,
+          "done_reason": "stop",
+          "truncated": false,
+          "think_chars": 1553
+        },
+        {
+          "id": "toposort",
+          "pass": true,
+          "err": "",
+          "sec": 7.7,
+          "out_tokens": 315,
+          "tps": 41.8,
+          "done_reason": "stop",
+          "truncated": false,
+          "think_chars": 462
+        },
+        {
+          "id": "word_break",
+          "pass": true,
+          "err": "",
+          "sec": 6.4,
+          "out_tokens": 257,
+          "tps": 41.1,
+          "done_reason": "stop",
+          "truncated": false,
+          "think_chars": 527
+        },
+        {
+          "id": "thread_safe_counter",
+          "pass": true,
+          "err": "",
+          "sec": 7.1,
+          "out_tokens": 277,
+          "tps": 39.8,
+          "done_reason": "stop",
+          "truncated": false,
+          "think_chars": 395
+        }
+      ]
+    }
+  }
+}

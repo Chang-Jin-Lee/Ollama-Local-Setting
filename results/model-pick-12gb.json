@@ -1,0 +1,42 @@
+[
+  {
+    "Model": "ornith-1.5:9b",
+    "Ctx": 16384,
+    "SizeGB": 5.69,
+    "VramGB": 5.69,
+    "GpuPct": 100.0,
+    "GenTokS": 54.4,
+    "PromptTokS": 2790.0,
+    "LoadSec": 3.5
+  },
+  {
+    "Model": "granite4.2:8b-q8_0",
+    "Ctx": 16384,
+    "SizeGB": 11.42,
+    "VramGB": 9.68,
+    "GpuPct": 85.0,
+    "GenTokS": 26.8,
+    "PromptTokS": 2055.0,
+    "LoadSec": 6.5
+  },
+  {
+    "Model": "ornith:9b-q8_0",
+    "Ctx": 16384,
+    "SizeGB": 8.51,
+    "VramGB": 8.51,
+    "GpuPct": 100.0,
+    "GenTokS": 41.0,
+    "PromptTokS": 2653.0,
+    "LoadSec": 6.2
+  },
+  {
+    "Model": "granite4.2:30b-q2_K",
+    "Ctx": 16384,
+    "SizeGB": 14.38,
+    "VramGB": 9.74,
+    "GpuPct": 68.0,
+    "GenTokS": 10.4,
+    "PromptTokS": 541.0,
+    "LoadSec": 8.3
+  }
+]

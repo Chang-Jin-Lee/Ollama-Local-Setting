@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="340" viewBox="0 0 620 340" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <rect width="620" height="340" fill="#ffffff"/>
+  <text x="56" y="34" font-size="14" font-weight="600" fill="#1a1a1a">context 길이별 생성 속도 — RTX 4080 Laptop 12GB</text>
+  <text x="56" y="52" font-size="11" fill="#777">ornith-1.5:9b. 126,976까지는 전부 GPU에 올라가고 속도도 그대로다</text>
+
+  <g stroke="#e8e8e8" stroke-width="1">
+    <line x1="56" y1="255" x2="588" y2="255"/>
+    <line x1="56" y1="195" x2="588" y2="195"/>
+    <line x1="56" y1="135" x2="588" y2="135"/>
+    <line x1="56" y1="75"  x2="588" y2="75"/>
+  </g>
+  <g font-size="10" fill="#999" text-anchor="end">
+    <text x="48" y="259">0</text>
+    <text x="48" y="199">20</text>
+    <text x="48" y="139">40</text>
+    <text x="48" y="79">60</text>
+  </g>
+  <text x="18" y="165" font-size="10" fill="#777" transform="rotate(-90 18 165)" text-anchor="middle">tok/s</text>
+
+  <rect x="56" y="66" width="335" height="189" fill="#f4f8fb"/>
+  <text x="66" y="82" font-size="10" fill="#5b7c99">100% GPU</text>
+  <text x="500" y="82" font-size="10" fill="#b07a57">CPU로 밀려남</text>
+  <line x1="391" y1="66" x2="391" y2="255" stroke="#c9c9c9" stroke-width="1" stroke-dasharray="3 3"/>
+
+  <polyline points="70,90.9 141,90.9 213,89.4 284,90.9 356,89.7 427,93.6 499,196.8 570,210"
+            fill="none" stroke="#2d5f8a" stroke-width="2"/>
+
+  <g fill="#2d5f8a">
+    <circle cx="70"  cy="90.9" r="3.5"/>
+    <circle cx="141" cy="90.9" r="3.5"/>
+    <circle cx="213" cy="89.4" r="3.5"/>
+    <circle cx="284" cy="90.9" r="3.5"/>
+    <circle cx="356" cy="89.7" r="3.5"/>
+  </g>
+  <g fill="#b07a57">
+    <circle cx="427" cy="93.6" r="3.5"/>
+    <circle cx="499" cy="196.8" r="3.5"/>
+    <circle cx="570" cy="210" r="3.5"/>
+  </g>
+
+  <g font-size="9.5" fill="#666" text-anchor="middle">
+    <text x="70"  y="274">16K</text>
+    <text x="141" y="274">32K</text>
+    <text x="213" y="274">64K</text>
+    <text x="284" y="274">96K</text>
+    <text x="356" y="274">124K</text>
+    <text x="427" y="274">128K</text>
+    <text x="499" y="274">192K</text>
+    <text x="570" y="274">256K</text>
+  </g>
+  <g font-size="9.5" text-anchor="middle">
+    <text x="356" y="80" fill="#2d5f8a" font-weight="600">55.1</text>
+    <text x="436" y="86" fill="#b07a57" text-anchor="start">53.8 · 92%</text>
+    <text x="499" y="214" fill="#b07a57">19.4 · 65%</text>
+    <text x="570" y="228" fill="#b07a57">15.0 · 55%</text>
+  </g>
+
+  <text x="56" y="300" font-size="10.5" fill="#777">절벽은 126,976과 129,024 사이. 2,048토큰 더 주는 순간 VRAM 요구가 9.07GB에서 9.86GB로 뛴다.</text>
+  <text x="56" y="318" font-size="10.5" fill="#777">128K를 넘기면 92% → 65%로 무너지고 속도는 3분의 1이 된다.</text>
+</svg>
