@@ -14,6 +14,7 @@
 | [RTX 4060 Ti](results/rtx4060ti-16gb.md) | 16GB | 288 GB/s | Qwen3.8-27B **IQ3_S** | 49,152 | 20.6 tok/s | **10 / 10** |
 | [RTX 4080 Laptop](results/rtx4080-laptop-12gb.md) | 12GB | 432 GB/s | ornith-1.5:9b | **126,976** | 54.6 tok/s | 7 / 10 |
 | [RTX 4080 Laptop](results/rtx4080-laptop-12gb.md) | 12GB | 432 GB/s | ornith:9b-q8_0 | 53,248 | 41.0 tok/s | 9 / 10 |
+| [RTX 4060 Ti + Strata](results/strata-rtx4060ti-16gb.md) | 16GB + RAM | 288 GB/s | Qwen3.8-Flash-Next **IQ3_S** (125B MoE) | 65,536 (GPU·RAM 분담) | 32.5 tok/s | **10 / 10** (medium) |
 
 **VRAM만 보고 고르면 틀린다.** 위 두 16GB 카드는 VRAM이 똑같은데 답이 다르다. 4080은 IQ4_XS에 24K가 맞지만, 4060 Ti는 한 단계 낮은 IQ3_S가 모든 면에서 이긴다 — 더 빠르고, context는 3배 길고, 코딩 문제도 더 많이 맞혔다. 대역폭이 2.5배 낮고 여유 VRAM이 더 빠듯하기 때문이다.
 
@@ -21,6 +22,10 @@
 다른 카드다. 27B이 아예 안 들어가 9B을 쓰는데, 모델이 작아진 만큼 남은 자리가 전부 KV cache로
 가서 context는 오히려 여기가 제일 길다. 12GB 쪽만 두 줄인 건 하나로 못 정해서다. 빠르고
 context가 긴 쪽과 정답률이 높은 쪽이 갈렸다.
+
+**RAM이 넉넉하면 VRAM보다 큰 모델도 된다.** 마지막 줄은 Ollama가 아니라 [Strata](https://github.com/Niko1221/Strata)로
+125B MoE 모델을 GPU와 RAM에 나눠 올린 결과다. 같은 4060 Ti인데 27B보다 생성이 빠르고, 상용 모델로 치면
+GPT-5.4~5.5·Claude Sonnet 5 급이다([아래](#strata로-125b-모델-돌리기-rtx-4060-ti-16gb)).
 
 여기 자기 카드를 추가하려면 [CONTRIBUTING.md](CONTRIBUTING.md)를 보면 된다.
 
@@ -332,6 +337,85 @@ Ollama 문제가 아니고, thinking을 꺼도 똑같이 잘리니 thinking 문�
 
 둘 다 받아두고 쓰임에 따라 바꾸는 게 낫다. 합쳐서 16GB고, 디스크는 남는다.
 
+## Strata로 125B 모델 돌리기 (RTX 4060 Ti 16GB)
+
+i9-13900KF / DDR5-4800 128GB / Windows 11 Pro / Strata 0.1.39. 전문은 [`results/strata-rtx4060ti-16gb.md`](results/strata-rtx4060ti-16gb.md).
+
+[Strata](https://github.com/Niko1221/Strata)는 VRAM에 안 들어가는 거대 MoE 모델을 GPU·RAM·CPU·SSD에 나눠
+돌리는 엔진이다. 자주 쓰는 expert만 GPU에 두고 나머지는 RAM에서 CPU가 계산한다. 이걸로 **Qwen3.8-Flash-Next
+(125B MoE)**를 IQ3_S로 올렸다. 위의 27B보다 4.6배 큰 모델이다. VRAM 16GB에 RAM이 64GB 넘게 남는 PC면 된다.
+
+### 상용 모델과 비교하면
+
+<img src="assets/strata-tier-comparison.svg" width="620" alt="Artificial Analysis 지수로 본 상용 모델 비교">
+
+[Artificial Analysis](https://artificialanalysis.ai/models/qwen3-8-flash-next) 지수 v4.3.2로 **40점**이다.
+한 기관이 같은 방법으로 잰 값만 놓고 보면 이렇다.
+
+- **OpenAI로는 GPT-5.4~5.5 급.** GPT-5.4(39), GPT-5.5(38)와 1~2점 차이라 갈라 말할 크기가 아니다.
+- **Anthropic으로는 Sonnet 5 이상, Opus 4.8 미만.** Sonnet 5(38)보다 2점 위, Opus 4.8(42)보다 2점 아래. Opus 5(50)와는 10점, Opus 5.5(58)와는 18점 차이가 난다.
+- **같은 PC에서 쓰던 27B(34)보다 6점 위.** 생성 속도는 오히려 더 빠르다.
+
+참고로 "Claude Sonnet 4.8"은 없다. Sonnet은 4.6 다음이 5다.
+
+AA가 잰 건 원본 정밀도 모델이지만, 양자화를 만든 [ISTA-DASLab](https://huggingface.co/ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF)
+측정으로 IQ3_S는 AIME25·GPQA·LiveCodeBench 평균이 원본과 같다(93.26 대 93.12). 그래서 이 점수를 이 PC에
+그대로 가져왔다.
+
+총점이 비슷해도 성격은 다르다. **사무·에이전트 작업은 오히려 위**다. AutomationBench 56%로 GPT-5.5(47%),
+Opus 4.8(46%)보다 높고, Terminal-Bench 4.0은 25%로 GPT-5.5(15%)의 1.7배다. 반대로 **지식 신뢰도는 크게 처진다.**
+AA-Omniscience가 −10이다. 모르는 걸 모른다고 하지 않고 지어낸다는 뜻이고, 상용 모델은 전부 양수다(GPT-5.5 21).
+사실 확인이 중요한 질문엔 답을 그대로 믿으면 안 된다.
+
+### 속도
+
+| 프롬프트 | 프롬프트 처리 | 생성 |
+|---|---|---|
+| 1K | 271 tok/s | 32.8 tok/s |
+| 4K | 793 tok/s | 31.4 tok/s |
+| 32K | 1,278 tok/s | 32.5 tok/s |
+| 64K | 1,455 tok/s | 33.6 tok/s |
+
+`bench/speed_openai.py`로 쟀다. 생성이 context 길이와 상관없이 평평하다. 27B(20.6 tok/s)보다 모델은 4.6배
+큰데 생성은 1.6배 빠르다. MoE라 토큰마다 실제로 계산하는 파라미터가 적다.
+
+**켜자마자 재면 안 된다.** 서버를 띄운 직후에는 생성이 20 tok/s 안팎, 32K 프롬프트 처리가 708 tok/s였다.
+GPU에 올린 expert 캐시의 적중률이 31%에서 시작해 쓰다 보면 65%까지 오르면서 빨라진다.
+
+### 코드를 짜게 시켜보면
+
+| thinking | 통과 | 문제당 평균 |
+|---|---|---|
+| high (Strata 기본값) | 8 / 10 | 208초 |
+| **medium** | **10 / 10** | **22초** |
+| off | 10 / 10 | 7초 |
+
+**이 PC에서는 high를 쓰면 안 된다.** 실패한 두 문제는 둘 다 16,384토큰 한도를 다 쓰고 잘렸다. 같은 말을
+되풀이한 게 아니라 지나치게 꼼꼼하게 검증하고, 단순 DP면 될 문제에 복잡한 알고리즘을 설계하다 시간이 갔다.
+medium은 같은 두 문제를 40초 안에 풀었다. 이 속도로 high는 실사용하기엔 너무 오래 생각한다.
+
+그래서 Strata 공유 설정(`strata-iq3_s.shared-settings.json`)에 `reasoning_effort: medium`을 넣어뒀다. 강도를
+따로 안 보내는 앱은 이 값을 받는다.
+
+정수 계산기 파서에서 high가 끝나지 않은 건 4080·4060 Ti의 27B IQ4_XS와 같은 문제, 같은 증상이다. 모델이 4.6배
+커져도 그대로였으니 Qwen3.8 계열의 성향으로 보인다.
+
+### OpenCode + Superpowers로 쓰기
+
+`setup/opencode.json`과 같은 방식으로 provider를 하나 더 두면 된다. baseURL만 Strata(`http://127.0.0.1:8080/v1`)로.
+설정 전문은 [측정 기록](results/strata-rtx4060ti-16gb.md#opencode--superpowers)에 있다.
+Superpowers는 전역 플러그인이라 그대로 붙는다. `small_model`도 Strata로 바꿔야 한다. Ollama에 남겨두면
+제목 생성 때마다 Ollama 모델이 VRAM에 따로 올라가 Strata와 GPU를 다툰다.
+
+"TDD로 divide 함수를 추가해라"를 시키자 스스로 `test-driven-development` 스킬을 불러 RED→GREEN을 두 바퀴
+돌렸다. 기본 동작을 먼저 한 바퀴, 0으로 나누기 엣지 케이스를 따로 한 바퀴. 112초 걸렸다. 27B는 한 바퀴였다.
+
+### Ollama와 같이 쓸 때
+
+**`OLLAMA_KEEP_ALIVE=-1`이면 안 된다.** Ollama 모델이 VRAM 13GB를 영원히 잡고 있으면 Strata가 GPU에 올릴 수
+있는 expert가 확 줄어든다. 10분(`10m`) 정도로 두면 안 쓸 때 알아서 비운다. 둘을 동시에 돌리면 둘 다 느려지니
+한 번에 하나씩 쓰는 게 맞다.
+
 ## 설치 중에 걸렸던 것들
 
 문서대로 했는데 안 되는 지점이 몇 군데 있었다. 스크립트에는 이미 반영해둔 것들.
@@ -402,7 +486,8 @@ bench/
   ctx-sweep.ps1               context를 훑어 한계선 찾기 (공유 메모리 유출까지 검사)
   speed.ps1                   생성 속도, 프롬프트 처리 속도, 로딩 시간
   prompt-gen.ps1              캐시에 안 걸리는 긴 프롬프트 생성 (위 두 개가 같이 씀)
-  run.py, tasks.py            알고리즘 10문제를 실행 채점
+  run.py, tasks.py            알고리즘 10문제를 실행 채점 (API=openai 면 Strata 등 OpenAI 호환 서버)
+  speed_openai.py             OpenAI 호환 서버의 길이별 프롬프트 처리·생성 속도
 results/
   rtx4080-16gb.md             측정 기록 전문
   rtx4060ti-16gb.md           측정 기록 전문
@@ -410,6 +495,8 @@ results/
   model-pick-12gb.json        모델 비교 원본 수치
   ctx-sweep-12gb.json         context 스윕 원본 수치
   rtx4080-laptop-12gb-coding.json   코딩 벤치마크 원본 수치
+  strata-rtx4060ti-16gb.md    Strata + Qwen3.8-Flash-Next 측정 기록 전문
+  strata-rtx4060ti-16gb.json  속도·코딩 벤치마크 원본 수치
 ```
 
 ## 참고한 곳
